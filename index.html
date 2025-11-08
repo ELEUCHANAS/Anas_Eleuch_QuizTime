@@ -6,26 +6,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <title>Quiz Time</title>
 </head>
 <body>
     <div id="Quiz-container">
-        <h2>Quiz Time</h2>
-        <span id="score"> score = </span>
-        <span id="timer"> 60 <img width="50px" height="25px" src="images/timer.png" alt=""></span>
+        <div id="score_timer_h2">
+            <h2><span id="Quiz-h2">Quiz</span> Time</h2>
+            <div id="score"> Score = <span id="score_num">0</span></div>
+        </div>
         <hr>
         <div id="Quiz">
-            <span id="question">question ?</span>
+            <div id="timer"><span id="time">60</span>s</div>
+            <div id="question">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit, facere. ?</div>
             <div id="AB-section">
-                <span class="answer">A - A</span>
-                <span class="answer">B - B</span>
+                <span class="answer">A - April</span>
+                <span class="answer">B - Banana</span>
             </div>
             <div id="CD-section">
-                <span class="answer">C - C</span>
-                <span class="answer">D - D</span>
+                <span class="answer">C - Cool</span>
+                <span class="answer">D - Diemeter</span>
             </div>
         </div>
-        <button id="next/submit_btn">Next</button>
+        <button id="next/submit_btn">Next </button>
     </div>
     <script src="scripts/script.js"></script>
 </body>
