@@ -21,7 +21,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    padding: 0; 
+    padding: 0;
     background: #1A1A2E;
     box-sizing: border-box;
 }
@@ -63,11 +63,14 @@ h2 {
     font-size: 20px;
     font-weight: bold;
 }
-#timer, #score {
+#timer, #score ,#user_name {
     font-family: "Changa One", sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     color: white;
     margin: 0 5px;
+}
+#score_user{
+    text-align: left;
 }
 #timer {
     border-radius: 20px;
@@ -75,6 +78,7 @@ h2 {
     background-color: #16213E;
 }
 .answer {
+    text-align: left;
     font-family: "Montserrat", sans-serif;
     display: inline-block;
     width: 35%;
@@ -107,10 +111,14 @@ h2 {
     background-color: #00BCD4;
     color: white;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 #next\/submit_btn:hover {
+    transform: scale(1.05);
     background-color: #0097A7;
+}
+#next\/submit_btn.active{
+    transform: scale(0.95);
 }
 #AB-section, #CD-section {
     display: flex;
@@ -169,5 +177,5 @@ h2 {
         width: 80%;
         margin: 10px 0;
     }
-    
+
 }
