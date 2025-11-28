@@ -75,25 +75,55 @@ const quizQuestions = [
 const answerOptions = document.querySelectorAll(".answer");
 const questionText = document.getElementById("question");
 const answers_area = document.getElementById("answers");
+const FaildSound = document.getElementById("Wrong");
+const CorrectSound = document.getElementById("Correct");
 
+let stop_resolve;
+let stopTimeout;
 let score;
 let timer;
 let correct_ans = quizQuestions[0].answer
 function stop(st){
     return new Promise((resolve) => {
-        setTimeout(resolve, st * 1000);
+        stop_resolve=resolve;
+        stopTimeout=setTimeout(resolve, st * 1000);
     });
 }
-
-answers_area.addEventListener("click",(e) => {
-    if(e.target.textContent[0] == correct_ans){
-        e.target.classList.add("correct")
-    }else{
-        e.target.classList.add("wrong")
-    }
+function stop1(st){
+    return new Promise((resolve) => {
+        stopTimeout=setTimeout(resolve, st * 1000);
+    });
+}
+function find_correct_button(answer){
+  return answerOptions[answer.charCodeAt(0) - 'A'.charCodeAt(0)]
+}
+answers_area.addEventListener("click",async (e) => {
+    if (!e.target.classList.contains("answer")) return;
+    let wait_time;
+    document.getElementById("tick").pause();
+    document.getElementById("tick").muted = true;
+    clearInterval(timer);
     answerOptions.forEach((btn) => {
         btn.disabled = true;
     })
+    if (stopTimeout) {
+        clearTimeout(stopTimeout);
+        stopTimeout = null;
+    }
+    if(e.target.textContent[0] == correct_ans){
+        e.target.classList.add("correct")
+        score++;
+        CorrectSound.play();
+        wait_time = 6000;
+    }else{
+        e.target.classList.add("wrong")
+        find_correct_button(correct_ans).classList.add("correct");
+        FaildSound.play()
+        wait_time = 3000;
+    }
+    setTimeout(() => {
+        stop_resolve();
+    }, wait_time);
 })
 function loadQuestion(index) {
     const currentQuestion = quizQuestions[index];
@@ -103,19 +133,33 @@ function loadQuestion(index) {
     answerOptions.forEach((option, index) => {
         option.textContent = currentQuestion.options[index];
     });
+    document.getElementById("tick").muted = false;
     
 }
 async function Quiz(index,startTime) {
-    let timer = setInterval(() => {
+    document.getElementById("timer").style.color = "white";
+    timer = setInterval(async () => {
         startTime--;
         document.getElementById("timer").textContent = `${startTime}s`;
         if (startTime <= 0) {
             clearInterval(timer);
-            loadQuestion(++index);
+            answerOptions.forEach((btn) => {
+              btn.disabled = true;
+            })
+            await stop(1.5);
+            find_correct_button(correct_ans).classList.add("correct");
+            document.getElementById("tick").pause();
+            FaildSound.play();
+        }
+        else if(startTime == 10){
+            document.getElementById("tick").currentTime = 0;
+            document.getElementById("timer").style.color = "red";
+            document.getElementById("tick").play();
         }
     }, 1000);
 
     loadQuestion(index);
+    document.getElementById("timer").textContent = `${startTime}s`;
     correct_ans = quizQuestions[index].answer
     answerOptions.forEach((btn) => {
         btn.classList.remove("correct","wrong");
@@ -126,8 +170,8 @@ async function startQuiz() {
     score = 0;
     let index = 0;
     while (index < quizQuestions.length) {
-        Quiz(index, 5);
-        await stop(5);
+        Quiz(index, 13);
+        await stop(17);
         index++;
     }
 }
