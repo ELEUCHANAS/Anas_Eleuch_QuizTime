@@ -18,14 +18,21 @@ L’utilisateur peut saisir son **nom**, répondre aux questions, voir son **sco
 - Possibilité de **rejouer le quiz** plusieurs fois avec **des questions aleatoirement choisis**
 
 ## **Lien vers la page GitHub Pages (rendu final)**
-**Lien :**  
+**Lien :**  https://eleuchanas.github.io/Anas_Eleuch_QuizTime/
 
 
 ## **Nouveautés explorées**
-
+- **Gestion dynamique** du DOM pour afficher les questions et les réponses
+- Interaction avec **le localStorage** pour sauvegarder le meilleur score
+- Intégration de **sons et feedback** visuels pour améliorer **l’expérience utilisateur**\
+- L'utilisation des fonctions async comme **setTimeout**, **setInterval** et **Promises** pour synchroniser les actions du quiz
 
 ## **Difficultés rencontrées**
-
+- Synchroniser **le timer** avec les animations et les sons
+- Comprendre certaines **fonctionnalités avancées** de JavaScript comme **les promises** et **le DOM dynamique**
+- Empêcher l’utilisateur de **cliquer plusieurs fois ou plusieurs boutons** sur les réponses pour une question affichee (désactivation des boutons)
 
 ## **Solutions apportées**
-
+- Recherche et lecture de **la documentation ainsi que des videos Youtube** sur setTimeout, promises, DOM manipulation
+- Tests **étape par étape** pour vérifier que les boutons se désactivent correctement
+- Simplification de la logique du quiz pour que chaque fonction ait **une seule responsabilité**
