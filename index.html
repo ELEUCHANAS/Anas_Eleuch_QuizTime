@@ -3,42 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <!-- Main Styles -->
     <link rel="stylesheet" href="style.css">
     <title>Quiz Time</title>
 </head>
 <body>
+    <!-- Sons -->
     <audio id="Wrong" src="cartoon-fail-trumpet-278822.mp3"></audio>
     <audio id="Correct" src="Quiz-correct-sound-with-applause.mp3" hidden></audio>
     <audio id="tick" src="COUNTDOWN TIMER Quiz Show ( v 556 ) 10 sec timer with beep sound 4k.mp3" hidden></audio>
+    
+    <!--Interface du Quiz -->
     <div id="welcome_screen"></div>
     <div id="Quiz-container">
         <div id="score_timer_h2">
             <h2><span id="Quiz-h2">Quiz</span> Time</h2>
             <div id="score_user">
-                <div id="user_name">SuPeR_Pi9</div>
+                <div id="user_name"></div>
                 <div id="score"> Score = <span id="score_num">0</span></div>
             </div>
         </div>
         <hr>
         <div id="Quiz">
-            <div id="timer"><span id="time">10</span>s</div>
-            <div id="question">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit, facere. ?</div>
-            <div id="answers">
-                <div id="AB-section">
-                    <button class="answer"><span>A - April</span></button>
-                    <button class="answer"><span>B - Banana</span></button>
-                </div>
-                <div id="CD-section">
-                    <button class="answer"><span>C - Cool</span></button>
-                    <button class="answer"><span>D - Diemeter</span></button>
-                </div>
+            <h1>Welcome to <span>Quiz Time</span></h1>
+            <h3>Please Type Your name</h3>
+            <div id="input_btn">
+                <input type="text" id="name_input" placeholder="Your Name">
+                <button id="start_btn" class="answer">Start Quiz</button>
             </div>
         </div>
-        <p id="questions_num"><span id="questioni"></span> of 10 questions</p>
     </div>
-    <script src="script.js"></script>
+    <!-- JavaScript -->
+    <script type="module" src="script.js"></script>
 </body>
 </html>
